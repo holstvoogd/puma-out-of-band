@@ -32,20 +32,18 @@ Add following lines to your puma `config.rb` (see
 # config/puma.rb
 
 plugin 'oob'
-activate_oob_worker
+oob_bind 'tcp://0.0.0.0:8081'
 ```
 
 ### Configuation
 
-You may pass optional configuration to activate_oob_worker:
-
+You may pass optional configuration to oob_config:
 
 ```ruby
-activate_oob_worker
-  bind: 'tcp://0.0.0.0:8080', # Defaults to the primary binds, prefixing the port numbers with a 1 and/or adding -oob to the socket name.
-  min_threads: 1, # Default = 0
-  max_threads: 2, # Default = 1
-  app: ->(env) { [200, {}, ["Hello world!"]]} # Defaults to you application, any rack app can be used.
+oob_bind 'tcp://0.0.0.0:8081' # support tcp/ssl/unix bind, maybe called multiple times
+oob_config  min_threads: 1, # Default = 0
+            max_threads: 2, # Default = 1
+            app: ->(env) { [200, {}, ["Hello world!"]]} # Defaults to you application, any rack app can be used.
 ```
 
 ## Credits
