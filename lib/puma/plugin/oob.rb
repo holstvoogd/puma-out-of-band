@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'puma/out_of_band/dsl'
-require 'puma/out_of_band/server'
 require 'puma/minissl/context_builder'
 
 Puma::Plugin.create do
